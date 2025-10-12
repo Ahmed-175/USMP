@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 
-export const logout = async (req: Request, res: Response) => {
+ const logout = async (req: Request, res: Response) => {
   try {
     res.clearCookie("accessToken", { path: "/" });
     return res.json({ message: "Logged out" });
@@ -9,3 +9,6 @@ export const logout = async (req: Request, res: Response) => {
     return res.status(500).json({ message: "Server error" });
   }
 };
+
+
+export default logout

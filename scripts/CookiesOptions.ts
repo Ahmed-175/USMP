@@ -4,6 +4,6 @@ export const accessCookieOptions = {
   httpOnly: true,
   secure: isProd,
   sameSite: "lax" as const,
-  maxAge: 15 * 60 * 1000, // 15 minutes
+  maxAge: 30 * 24 * 60 * 60 * 1000, // 30 day
   path: "/",
 };

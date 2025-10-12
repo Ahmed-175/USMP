@@ -1,4 +1,4 @@
-import { Schema, model } from "mongoose";
+import { Schema, Types, model } from "mongoose";
 import bcrypt from "bcrypt";
 import { IUser } from "../types/user.type";
 
@@ -21,6 +21,67 @@ const userSchema = new Schema<IUser>(
       type: String,
       required: [true, "Password is required"],
       minlength: [6, "Password must be at least 6 characters long"],
+    },
+    avatar: {
+      type: String,
+      default: "",
+    },
+    bio: {
+      type: String,
+      default: "",
+    },
+    banner: {
+      type: String,
+      default: "",
+    },
+    jobTitle: {
+      type: Types.ObjectId,
+      ref: "Job",
+      default: null,
+    },
+    skills: {
+      type: [Types.ObjectId],
+      ref: "Skill",
+      default: [],
+    },
+    followings: {
+      type: [Types.ObjectId],
+      ref: "User",
+      default: [],
+    },
+    followers: {
+      type: [Types.ObjectId],
+      ref: "User",
+      default: [],
+    },
+    communities: {
+      type: [Types.ObjectId],
+      ref: "Community",
+      default: [],
+    },
+    posts: {
+      type: [Types.ObjectId],
+      ref: "Post",
+      default: [],
+    },
+    postsLiked: {
+      type: [Types.ObjectId],
+      ref: "Post",
+      default: [],
+    },
+    notifications: {
+      type: [Types.ObjectId],
+      ref: "Notification",
+      default: [],
+    },
+    search_keywords: {
+      type: [String],
+      default: [],
+    },
+    parametars_posts_liked_tags: {
+      type: [Types.ObjectId],
+      ref: "Tag",
+      default: [],
     },
   },
   { timestamps: true }

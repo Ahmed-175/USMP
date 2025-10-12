@@ -18,18 +18,3 @@ export const requireAuth = (
   (req as any).user = { _id: decoded._id };
   next();
 };
-
-// CSRF middleware (double-submit cookie)
-export const verifyCsrf = (req: Request, res: Response, next: NextFunction) => {
-  const csrfCookie = req.cookies?.csrfToken;
-  const csrfHeader = req.headers["x-csrf-token"];
-
-  // For state-changing methods we require CSRF token
-  if (["POST", "PUT", "PATCH", "DELETE"].includes(req.method)) {
-    if (!csrfCookie || !csrfHeader)
-      return res.status(403).json({ message: "CSRF token missing" });
-    if (csrfCookie !== csrfHeader)
-      return res.status(403).json({ message: "Invalid CSRF token" });
-  }
-  next();
-};

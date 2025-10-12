@@ -5,6 +5,8 @@ import cors from "cors";
 import morgan from "morgan";
 import cookieParser from "cookie-parser";
 import authRoutes from "./routes/authRoutes.routes";
+import userRoutes from "./routes/userRoutes.routes";
+import postRoutes from "./routes/postRoutes.routes";
 dotenv.config();
 const app: Application = express();
 const PORT = process.env.PORT || 3001;
@@ -25,7 +27,9 @@ app.get("/health", (req: Request, res: Response) => {
   res.status(200).json({ health: "ok"});
 });
 
-app.use("/api/auth" , authRoutes)
+app.use("/api/auth" , authRoutes);
+app.use("/api/user" , userRoutes);
+app.use("/api/post" , postRoutes);
 
 app.listen(PORT, () => {
   console.log(`server running on http://localhost:${PORT}`);

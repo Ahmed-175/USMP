@@ -1,2 +1,7 @@
 @import "tailwindcss";
-@config "../tailwind.config.ts"
+@config "../tailwind.config.ts";
+
+
+body {
+    @apply bg-background;
+}
