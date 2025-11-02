@@ -5,6 +5,7 @@ import multer from "multer";
 import { storageAvatars, storageBanner } from "../configs/multerConfig";
 import upload from "../controllers/user/upload.controller";
 import toggleFollowUser from "../controllers/user/toggleFollowUser.controller";
+import getProfile from "../controllers/user/getProfile";
 const router = Router();
 
 const uploadAvatar = multer({storage : storageAvatars});
@@ -12,6 +13,7 @@ const uploadBanner = multer({storage : storageBanner });
 
 
 router.use(requireAuth);
+router.get("/info" , getProfile)
 router.put("/edit-profile", editProfile);
 router.post("/upload-avatar", uploadAvatar.single("avatar"), upload)
 router.post("/upload-banner", uploadBanner.single("banner"), upload)

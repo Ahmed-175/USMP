@@ -6,7 +6,7 @@ import { accessCookieOptions } from "../../scripts/CookiesOptions";
 const login = async (req: Request, res: Response) => {
   try {
     const { email, password } = req.body;
-
+    console.log(email , password);
     if (!email || !password)
       return res.status(400).json({ message: "Email and password required" });
 
@@ -21,6 +21,7 @@ const login = async (req: Request, res: Response) => {
 
     res.cookie("accessToken", accessToken, accessCookieOptions);
     return res.json({
+      success :true , 
       message: "Login successful",
       user: { id: user._id, username: user.username, email: user.email },
     });

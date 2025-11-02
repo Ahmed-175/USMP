@@ -47,6 +47,7 @@ const signUp = async (req: Request, res: Response): Promise<void> => {
     const token = createAccessToken({ _id: newUser._id });
     res.cookie("accessToken", token);
     res.status(201).json({
+      success : true,
       message: "Registration successful.",
       user: {
         id: newUser._id,
