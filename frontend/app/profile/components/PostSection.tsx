@@ -7,7 +7,7 @@ const PostSection = () => {
   console.log((user as any)?.posts[3].comments[0]._id);
   return (
     <div className=" flex flex-col gap-6 mb-28">
-      {user?.posts?.map((post, index) => (
+      { user?.posts?.length > 0 && user?.posts?.map((post, index) => (
         <PostEditable key={index} post={post} />
       ))}
     </div>

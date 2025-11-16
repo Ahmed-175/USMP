@@ -39,16 +39,14 @@ const sections = [
   },
 ];
 
-const StateSection = ({ stateSection, setStateSection }: any) => {
-  const [activeSection, setActiveSection] = useState("posts");
-
-  const handleSectionClick = (sectionId: string) => {
-    setActiveSection(sectionId);
-    if (setStateSection) {
-      setStateSection(sectionId);
-    }
-  };
-
+const StateSection = ({
+  stateSection,
+  setStateSection,
+}: {
+  stateSection: string;
+  setStateSection: any;
+}) => {
+  console.log("the state now", stateSection);
   return (
     <div
       className="mx-auto mt-10 w-full px-6 flex justify-between
@@ -57,11 +55,11 @@ const StateSection = ({ stateSection, setStateSection }: any) => {
       {sections.map((sec) => (
         <button
           key={sec.id}
-          onClick={() => handleSectionClick(sec.id)}
+          onClick={() => setStateSection(sec.id)}
           className={`flex flex-col items-center gap-2 p-3 cursor-pointer 
               transition-all duration-200 ease-in-out  
               ${
-                activeSection === sec.id
+                stateSection === sec.id
                   ? `${sec.color} border-b-2 rounded-none border-gray-400  `
                   : "text-gray-500 hover:text-indigo-500 rounded-xl hover:bg-indigo-100"
               }`}
@@ -69,7 +67,7 @@ const StateSection = ({ stateSection, setStateSection }: any) => {
           <div className="relative">
             <sec.icon
               className={`w-5 h-5 transition-all duration-200 ${
-                activeSection === sec.id ? "scale-110" : ""
+                stateSection === sec.id ? "scale-110" : ""
               }`}
             />
           </div>

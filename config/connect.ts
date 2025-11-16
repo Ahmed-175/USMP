@@ -12,10 +12,9 @@ export const connectToDb = () => {
   mongoose
     .connect(MONGO_URL)
     .then(() => {
-      console.log(" 👍👍👍 Database connected successfully");
+      console.log("Database connected successfully");
     })
     .catch((error) => {
-      console.error(" 😅😁 Database connection failed", error);
+      console.error("Database connection failed", error);
     });
 };
-
